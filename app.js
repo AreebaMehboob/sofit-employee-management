@@ -11,7 +11,8 @@ const csvParser = require('csv-parser'); // Import csv-parser module for parsing
 
 dotenv.config();
 const app = express();
-
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD);
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

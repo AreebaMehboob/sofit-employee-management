@@ -64,5 +64,4 @@ Sofit Employee Management is a Node.js application designed to manage employee r
 4. **Multer**: Middleware for handling multipart/form-data, primarily used for file uploads.
 5. **Nodemailer**: Module for sending emails from Node.js applications.
 6. **csv-parser**: Library for parsing CSV files.
-7. **validator**: Library for string validation and sanitization.
-8. **body-parser**: Middleware for parsing JSON and URL-encoded request bodies.
+7. **body-parser**: Middleware for parsing JSON and URL-encoded request bodies.

@@ -148,24 +148,32 @@ function isValidEmployeeData(employee) {
 async function getEmployeesByPhoneNumber(req, res) {
   try {
     const { page = 1, limit = 10, phoneNumber } = req.query;
-    const skip = (page - 1) * limit;
 
-    const phoneNumberRegex = new RegExp(`^${phoneNumber.replace(/-/g, '')}$`);
+    // Validate phoneNumber format
+    if (!phoneNumber || !/^\d{3}-\d{3}-\d{4}$/.test(phoneNumber)) {
+      return res.status(400).json({ error: 'Invalid phone number format' });
+    }
+
+    const skip = (page - 1) * limit;
+    const phoneNumberArray = phoneNumber.split('-');
 
     const employees = await Employee.find({
-      phone: { $regex: phoneNumberRegex },
+      phone: {
+        $regex: `^${phoneNumberArray[0]}-${phoneNumberArray[1]}-${phoneNumberArray[2]}$`
+      },
       status: true
     })
       .select('name email employeeTitle phone')
       .skip(skip)
       .limit(parseInt(limit));
 
-    res.status(200).json({ employees });
+    res.status(200).json({ data: employees });
   } catch (error) {
     console.error('Error filtering employees by phone number:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 }
+
 async function getEmployeeByEmail(req, res) {
   try {
     const { email } = req.query;

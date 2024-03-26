@@ -1,0 +1,5 @@
+name,email,employeeTitle,phone,status
+John Doe,johndoe@example.com,backend developer,1234567890,true
+Jane Smith,janesmith@example.com,frontend developer,9876543210,false
+Alice Johnson,alicejohnson@example.com,ai developer,4567890123,true
+Bob Brown,bobbrown@example.com,backend developer,7890123456,false
